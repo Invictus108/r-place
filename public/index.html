@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--orignal concept(https://www.youtube.com/watch?v=y_J1SPXilGg)-->
+<!--use "node index" in bash on directory to activate localhost:3000. Try to chnage that?-->
+<!--to change size for canvas change it in html, then change the constants in index.js and the button bounds to dimesions in html divided by square size in place.js. 
+    Also need to make sure the canvas corrdinate is divided by square size in the coordinate from click function -->
+<!--Make it click to place. Make it bigger and add zoom. Timer to place blocks. Try to get it on jadencohen.com. Add a graphing based off of math equations thing?-->
+<html>
+    <head>
+        <title>r/place</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> <!--https://code.jquery.com/jquery.min.js-->
+       
+        <link rel="stylesheet" href="style.css">
+
+    
+    </head>
+    <body>
+        <div class="background">
+            <div class="title"><p>r/place</p></div>
+                <div class = "controls">
+                    <div style="text-align: center">
+                        X: <input type="number" min="0" max="75" id="x-coord">
+                    
+                        Y: <input type="number" min="0" max="75" id="y-coord">
+                        
+                        Color: <input type="color" id="color">
+                        <br>
+                        Time till Next Block: <div id="f1">0:00</div>
+                        
+                        <button id="submit">Place Color</button>
+
+                    </div>
+                </div>
+
+                <canvas class="outline" id="place" height="750" width="750"></canvas>
+        </div>
+    </body>
+
+</html>
+
+<style>
+    .outline {
+        border: 5px solid black;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+}
+    *{
+        margin: 5px;
+    }
+    .title {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .background {
+        background-color: null
+    }
+
+
+    
+</style>
+
+<script src="place.js"></script>
