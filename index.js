@@ -26,4 +26,5 @@ io.on("connection", socket => {
     })
 })
 
-server.listen(3000)
+//when actually being hosted must be (process.env.PORT)
+server.listen(5000)

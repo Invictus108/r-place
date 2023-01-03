@@ -5,13 +5,23 @@ $(document).ready(() => {
     var socket = io()
 
     var canvas = $("#place")[0]
-    var contex = canvas.getContext("2d")
+    var ctx = canvas.getContext("2d")
+   
+
+
+        
+        
+
+        
+    
+    
+        
 
     socket.on("canvas", canvasData =>{
         canvasData.forEach((row, rowIndex) => {
             row.forEach((col, colIndex) => {
-                contex.fillStyle = col
-                contex.fillRect(colIndex * 10, rowIndex * 10, 10, 10) //size of squares. fillRect(x, y, width, height). 15
+                ctx.fillStyle = col
+                ctx.fillRect(colIndex * 10, rowIndex * 10, 10, 10) //size of squares. fillRect(x, y, width, height). 15
 
             })
         });
@@ -21,19 +31,26 @@ $(document).ready(() => {
     
 
     $("#submit").click(() => {
-            socket.emit("color", {
-                col: parseInt($("#x-coord").val()),
-                row: parseInt($("#y-coord").val()),
-                color: $("#color").val()
-    
-            })
-            time = 10
-            
-            if (isrun == false) {
-                timer2()
-                isrun = true
+        if (isrun == false) {
+            if (parseInt($("#x-coord").val()) <= 75 && parseInt($("#y-coord").val()) <= 75 && parseInt($("#x-coord").val()) > 0 && parseInt($("#y-coord").val()) > 0) {
+                socket.emit("color", {
+                    col: parseInt($("#x-coord").val()),
+                    row: parseInt($("#y-coord").val()),
+                    color: $("#color").val()
+        
+                })
+                time = 5
+                canClick = false
+                
+                if (isrun == false) {
+                    timer2()
+                    isrun = true
+                    
+                }
             }
+        }
     })
+        
 
     function getMousePosition(canvas, event) {
         let rect = canvas.getBoundingClientRect();
@@ -48,12 +65,14 @@ $(document).ready(() => {
                 color: $("#color").val()
                 
             })
-            time = 10
+            time = 5
             
+            canClick = false
+
             if (isrun == false) {
                 timer2()
                 isrun = true
-                canClick = false
+            
             }
     }
     }
