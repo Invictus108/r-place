@@ -1,4 +1,5 @@
-const express = require("express"),
+const express = require("express")
+const { wakeDyno, wakeDynos } = require('heroku-keep-awake'),
     app = express(),
     server = require("http").createServer(app),
     io = require("socket.io")(server)
@@ -27,5 +28,7 @@ io.on("connection", socket => {
 })
 
 //when actually being hosted must be (process.env.PORT)
-server.listen(process.env.PORT)
-//test
+server.listen(process.env.PORT, () =>{
+    wakeDyno(DYNO_URL);
+})
+
