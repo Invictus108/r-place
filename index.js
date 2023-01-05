@@ -19,14 +19,17 @@ const {wakeDyno} = require('heroku-keep-awake'),
 
 app.use(express.static("public"))
 io.on("connection", socket => {
+    console.log("A User Connected")
     socket.emit("canvas", canvas)
 
     socket.on("color", data => {
         canvas[data.row - 1][data.col - 1] = data.color
         io.emit("canvas", canvas)
     })
+}) 
+io.on("diconnect", socket => {
+    console.log("A User Disconnected")
 })
-
 //when actually being hosted must be (process.env.PORT)
 server.listen(process.env.PORT, () =>{
     wakeDyno("www.jadencohen.com");
