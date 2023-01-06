@@ -12,7 +12,7 @@ $(document).ready(() => {
     function draw(data) {
         ctx.fillStyle = data.color
         ctx.fillRect(data.x, data.y, 10, 10)
-        
+        io.emit("canvas", canvas)
     }
 
         
