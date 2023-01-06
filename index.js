@@ -26,6 +26,12 @@ io.on("connection", socket => {
         canvas[data.row - 1][data.col - 1] = data.color
         io.emit("canvas", canvas)
     })
+
+    socket.on("draw", msg);
+    function msg(data) {
+        console.log(data);
+        io.sockets.emit("draw", data);
+    }
 }) 
 io.on("diconnect", socket => {
     console.log("A User Disconnected")
