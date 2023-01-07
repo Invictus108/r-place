@@ -31,7 +31,7 @@ io.on("connection", socket => {
     function msg(data) {
         console.log(data);
         io.sockets.emit("draw", data);
-        io.broadcast.emit("canvas", canvas);
+        
     }
 }) 
 io.on("diconnect", socket => {
