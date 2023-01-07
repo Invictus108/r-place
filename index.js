@@ -30,7 +30,7 @@ io.on("connection", socket => {
     socket.on("draw", msg);
     function msg(data) {
         console.log(data);
-        io.sockets.emit("draw", data);
+        io.emit("draw", data);
         
     }
 }) 
