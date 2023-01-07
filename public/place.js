@@ -1,7 +1,7 @@
 var time = 0;
 var isrun = false;
 var canClick = true;
-io = require("socket.io")(server)
+
 $(document).ready(() => {
     var socket = io()
 
