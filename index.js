@@ -27,12 +27,7 @@ io.on("connection", socket => {
         io.emit("canvas", canvas)
     })
 
-    socket.on("draw", msg);
-    function msg(data) {
-        console.log(data);
-        io.emit("draw", data);
-        
-    }
+   
 }) 
 io.on("diconnect", socket => {
     console.log("A User Disconnected")

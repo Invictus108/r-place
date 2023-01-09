@@ -8,21 +8,8 @@ $(document).ready(() => {
     var canvas = $("#place")[0]
     var ctx = canvas.getContext("2d")
    
-    socket.on("draw", draw) 
-    
-    function draw(data) {
-        ctx.fillStyle = data.color
-        ctx.fillRect(data.x, data.y, 10, 10)
-        io.emit("canvas", canvas)
-    }
-
-        
-        
-
-        
     
     
-        
 
     socket.on("canvas", canvasData =>{
         canvasData.forEach((row, rowIndex) => {
