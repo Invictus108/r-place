@@ -1,3 +1,9 @@
+//keep awake
+const http = require('http');
+setInterval(() => {
+  http.get("http://www.jadencohen.com/");
+}, 25 * 60 * 1000);
+
 const express = require("express")
 const {wakeDyno} = require('heroku-keep-awake'),
     app = express(),
