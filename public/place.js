@@ -26,7 +26,7 @@ $(document).ready(() => {
 
     $("#submit").click(() => {
         if (isrun == false) {
-            if (parseInt($("#x-coord").val()) <= 75 && parseInt($("#y-coord").val()) <= 75 && parseInt($("#x-coord").val()) > 0 && parseInt($("#y-coord").val()) > 0) {
+            if (parseInt($("#x-coord").val()) <= 125 && parseInt($("#y-coord").val()) <= 75 && parseInt($("#x-coord").val()) > 0 && parseInt($("#y-coord").val()) > 0) {
                 socket.emit("color", {
                     col: parseInt($("#x-coord").val()),
                     row: parseInt($("#y-coord").val()),

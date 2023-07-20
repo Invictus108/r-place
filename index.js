@@ -5,7 +5,7 @@ const {wakeDyno} = require('heroku-keep-awake'),
     io = require("socket.io")(server)
 
     const c_rows = 75 //50
-    const c_cols = 75 //50
+    const c_cols = 125 //50
 
     var canvas = []
 
