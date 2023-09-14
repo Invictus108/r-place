@@ -7,7 +7,7 @@ It is meant to be hosted on heroku
 
 orignal concept: https://www.youtube.com/watch?v=y_J1SPXilGg
 
-To use locally use "node index" in termina; on directory to activate localhost: 3000
+To use locally use "node index" in terminal in directory to activate localhost: 3000
 
 To change size for canvas change it in html, then change the constants in index.js and the button bounds to dimesions in html divided by square size in place.js. Also need to make sure the canvas corrdinate is divided by square size in the coordinate from click function
 
