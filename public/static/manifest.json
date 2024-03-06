@@ -1,5 +1,5 @@
 {
-    "background_color": "#ea1a2c",
+    "background_color": "#0669f0",
     "dir": "ltr",
     "display": "standalone",
     "name": "r/place",
@@ -7,7 +7,7 @@
     "scope": "https://r-place1.herokuapp.com/",
     "short_name": "r/place",
     "start_url": "https://r-place1.herokuapp.com/",
-    "theme_color": "#eb0f0f",
+    "theme_color": "#0669f0",
     "id": "r/place",
     "description": "A Fun Collaborative Canvas",
     "lang": "en",
