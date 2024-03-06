@@ -109,6 +109,19 @@ $(document).ready(() => {
     
       
     }
+
+     //Serive worker for PWA
+     if ('serviceWorker' in navigator) {
+        window.onload = function() {
+          navigator.serviceWorker.register('../static/sw01.js')
+            .then(function(registration) {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+              console.error('Service Worker registration failed:', error);
+            });
+        };
+      }
    
 })
 
