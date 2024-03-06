@@ -59,7 +59,7 @@ $(document).ready(() => {
                 color: $("#color").val()
                 
             })
-            time = 5
+            time = 0
             
             canClick = false
 
@@ -96,7 +96,7 @@ $(document).ready(() => {
            time--;
            
            document.getElementById("submit").style.visibility="hidden";  
-           if (time < 0) { //stop the setInterval whe time = 0 for avoid negative time
+           if (time < 0) { //stop the setInterval whe time = 0 to avoid negative time
             clearInterval(refreshIntervalId);
             isrun = false
             canClick = true
