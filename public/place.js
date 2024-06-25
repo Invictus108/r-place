@@ -1,6 +1,7 @@
 var time = 0;
 var isrun = false;
 var canClick = true;
+timerTime = 0;
 
 $(document).ready(() => {
     var socket = io()
@@ -33,7 +34,7 @@ $(document).ready(() => {
                     color: $("#color").val()
         
                 })
-                time = 5
+                time = timerTime
                 canClick = false
                 
                 if (isrun == false) {
@@ -59,7 +60,7 @@ $(document).ready(() => {
                 color: $("#color").val()
                 
             })
-            time = 0
+            time = timerTime
             
             canClick = false
 
