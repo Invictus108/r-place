@@ -14,7 +14,13 @@ const client = new Client({
     }
 });
 
-client.connect();
+client.connect(err => {
+    if (err) {
+        console.error('Connection error', err.stack);
+    } else {
+        console.log('Connected to the database');
+    }
+});
 
 const createTableQuery = `
   CREATE TABLE IF NOT EXISTS canvas (
