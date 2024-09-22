@@ -13,8 +13,6 @@ This project is a clone of Reddit's famous **r/place**. It features a **75 x 125
 The idea is based on Reddit's **r/place** event, and you can learn more about the original concept by watching this [YouTube video](https://www.youtube.com/watch?v=y_J1SPXilGg).
 
 ## Local Setup Instructions
-
-1. **Clone the Repository**:
    ```bash
    git clone https://github.com/your-username/r-place-clone.git
    cd r-place-clone
