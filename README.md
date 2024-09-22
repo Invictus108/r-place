@@ -1,16 +1,22 @@
-This is a copy of reddits r/place.
+# r/place Clone
 
-It has a 75 by 125 grid for placing blocks and uses PostgreSQL to store locations and reload them. 
-It is a active server meaning that new block will upload in read time with no need for refreshing. 
+This project is a clone of Reddit's famous **r/place**. It features a **75 x 125 grid** where users can place blocks. The grid's state is stored using **PostgreSQL**, ensuring that block placements are saved and can be reloaded. The server operates in real-time, meaning new blocks are uploaded and displayed without the need for refreshing the page.
 
-It is meant to be hosted on heroku 
+## Key Features
 
-orignal concept: https://www.youtube.com/watch?v=y_J1SPXilGg
+- **75 x 125 Grid**: Users can place blocks in a grid with dimensions of 75 rows and 125 columns.
+- **PostgreSQL Integration**: Block placements are saved in a PostgreSQL database, allowing persistent storage and real-time updates.
+- **Real-Time Updates**: The server uses web sockets or a similar mechanism to ensure block placements are reflected immediately for all users, with no page refresh required.
 
-To use locally use "node index" in terminal in directory to activate localhost: 3000
+## Original Concept
 
-To change size for canvas change it in html, then change the constants in index.js and the button bounds to dimesions in html divided by square size in place.js. Also need to make sure the canvas corrdinate is divided by square size in the coordinate from click function
+The idea is based on Reddit's **r/place** event, and you can learn more about the original concept by watching this [YouTube video](https://www.youtube.com/watch?v=y_J1SPXilGg).
 
-Project Ideas:
-Make it bigger and add zoom. Add a graphing based off of math equations thing? 
-Add grid. Make sure the app dosent keep going to sleep. Find a way to block tamper monkey and other hacks
+## Local Setup Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/r-place-clone.git
+   cd r-place-clone
+   npm install
+   node index
