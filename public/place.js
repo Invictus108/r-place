@@ -4,6 +4,7 @@ var canClick = true;
 timerTime = 0;
 
 $(document).ready(() => {
+    console.log("ready")
     var socket = io()
 
     var canvas = $("#place")[0]
@@ -13,6 +14,7 @@ $(document).ready(() => {
     
 
     socket.on("canvas", canvasData =>{
+        console.log("canvas data", canvasData)
         canvasData.forEach((row, rowIndex) => {
             row.forEach((col, colIndex) => {
                 ctx.fillStyle = col
@@ -26,8 +28,10 @@ $(document).ready(() => {
     
 
     $("#submit").click(() => {
+        console.log("submit")
         if (isrun == false) {
             if (parseInt($("#x-coord").val()) <= 125 && parseInt($("#y-coord").val()) <= 75 && parseInt($("#x-coord").val()) > 0 && parseInt($("#y-coord").val()) > 0) {
+                console.log("Client Side: X: " + $("#x-coord").val() + ". Y " + $("#y-coord").val() + ". Color " + $("#color").val())
                 socket.emit("color", {
                     col: parseInt($("#x-coord").val()),
                     row: parseInt($("#y-coord").val()),
@@ -54,6 +58,7 @@ $(document).ready(() => {
         document.getElementById("x-coord").value = parseInt(x/10 + 1) //15
         document.getElementById("y-coord").value = parseInt(y/10 + 1) //15
         if (canClick) {
+            console.log("Client Side Mouse: X: " + $("#x-coord").val() + ". Y " + $("#y-coord").val() + ". Color " + $("#color").val())
             socket.emit("color", {
                 col: parseInt($("#x-coord").val()),
                 row: parseInt($("#y-coord").val()),
