@@ -6,6 +6,9 @@ timerTime = 0;
 $(document).ready(() => {
     console.log("ready")
     var socket = io()
+    socket.on('connect', () => {
+        console.log('Socket connected with ID:', socket.id);
+    });
 
     var canvas = $("#place")[0]
     var ctx = canvas.getContext("2d")

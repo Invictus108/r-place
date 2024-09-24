@@ -45,30 +45,40 @@ const c_cols = 125;
 
 var canvas = [];
 
-async function fetchColors(row, col) {
-    try {
-        const res = await client.query(
-            "SELECT color FROM canvas WHERE x = $1 AND y = $2",
-            [row, col]
-        );
 
-        if (res.rows.length > 0 && res.rows[0].color !== undefined) {
-            canvas[row][col] = res.rows[0].color;
-        } else {
-            // Set to white if no entry exists in the database
-            canvas[row][col] = "white"; // Change "white" to your desired default color
+  async function initializeCanvas() {
+    // Initialize the canvas array with the default color
+    for (let row = 0; row < c_rows; row++) {
+        canvas[row] = [];
+        for (let col = 0; col < c_cols; col++) {
+            canvas[row][col] = "white"; // Default color
         }
+    }
+
+    try {
+        // Fetch all canvas data in one query
+        const res = await client.query("SELECT x, y, color FROM canvas");
+
+        // Update the canvas array with data from the database
+        res.rows.forEach(pixel => {
+            const x = pixel.x;
+            const y = pixel.y;
+            const color = pixel.color;
+
+            // Ensure indices are within bounds
+            if (x >= 0 && x < c_rows && y >= 0 && y < c_cols) {
+                canvas[x][y] = color;
+            } else {
+                console.warn(`Invalid coordinates from DB: x=${x}, y=${y}`);
+            }
+        });
+
+        console.log("Canvas initialized with database data.");
     } catch (err) {
-        console.error("There was an error:", err.message);
+        console.error("Error fetching canvas data:", err.message);
     }
 }
 
-for (let rows = 0; rows < c_rows; rows++) {
-    canvas[rows] = [];
-    for (let cols = 0; cols < c_cols; cols++) {
-        fetchColors(rows, cols);
-    }
-}
 
 app.use(express.static("public"));
 
@@ -95,6 +105,11 @@ io.on("connection", socket => {
     });
 });
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log("Server is running on port " + (process.env.PORT || 3000));
-});
+
+(async () => {
+    await initializeCanvas();
+  
+    server.listen(process.env.PORT || 3000, () => {
+      console.log("Server is running on port " + (process.env.PORT || 3000));
+    });
+  })();
